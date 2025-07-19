@@ -1,0 +1,57 @@
+/* Define the custom fonts */
+@font-face {
+    font-family: 'Font-Hadayatullah';
+    src: url('/font/hidayatullah.ttf') format('truetype');
+  }
+@font-face {
+    font-family: 'Font-Deutschlander';
+    src: url('/font/Deutschlander.otf') format('opentype');
+  }
+@font-face {
+    font-family: 'Font-Gothic-Condensed';
+    src: url('/font/Gothic-Condensed.otf') format('opentype');
+  }
+@font-face {
+    font-family: 'Font-Gothic-Regular';
+    src: url('/font/Gothic-Regular.otf') format('opentype');
+  }
+  
+@font-face {
+    font-family: 'Font-Heathergreen';
+    src: url('/font/Heathergreen.otf') format('opentype');
+  }
+  
+  
+  /* Apply the custom fonts */
+  .font-hadayat {
+    font-family: 'Font-Hadayatullah', sans-serif;
+  }
+  .font-gothic-1 {
+    font-family: 'Font-Gothic-Regular', sans-serif;
+  }
+  
+  .font-gothic-2 {
+    font-family: 'Font-Gothic-Condensed', sans-serif;
+  }
+  .font-heathergreen {
+    font-family: 'Font-Heathergreen', sans-serif;
+  }
+  
+  .font-duet {
+    font-family: 'Font-Deutschlander', sans-serif;
+  }
+  .font-poppins {
+    font-family: 'poppins', sans-serif;
+  }
+  .font-josefin {
+    font-family: 'josefin sans', sans-serif;
+  }
+  .font-nunito {
+    font-family: 'nunito', sans-serif;
+  }
+  .font-saira {
+    font-family: 'saira', sans-serif;
+  }
+  
+
+  
