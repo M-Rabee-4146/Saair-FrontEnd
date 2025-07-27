@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router'; // Use react-router-dom for navigate
 import Navbar2 from '../Components/Navbar2';
 import Footer from '../Components/Footer';
-import CartItem from '../Components/cartItem'; // Ensure this path is correct
+import CartItem from '../Components/CartItem'; // Ensure this path is correct
 // Import ClearCart specifically from the slice as it's exported by name
 import { ClearCart } from '../Redux/features/cart'; // IMPORTANT: Use 'ClearCart' as per your slice export
 import { toast } from 'react-hot-toast';
