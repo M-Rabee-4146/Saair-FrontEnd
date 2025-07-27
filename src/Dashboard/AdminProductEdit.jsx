@@ -320,7 +320,7 @@ const AdminEditProduct = () => {
                                     {existingImages.map((imagePath, index) => (
                                         <div key={`existing-${index}`} className="relative group w-full aspect-square rounded-md overflow-hidden border border-gray-700">
                                             <img
-                                                src={`http://localhost:3200${imagePath}`}
+                                                src={`https://saair-backend-production.up.railway.app${imagePath}`}
                                                 alt={`Product existing ${index}`}
                                                 className="w-full h-full object-cover"
                                             />
