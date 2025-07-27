@@ -93,7 +93,7 @@ const Cards = ({ searchTerm, filterCategory, sortFilter, allProducts, loading, e
                             className={`card min-w-[300px] card bg-[#0E0E0E] ${location.pathname === '/Shop' ? 'min-h-[430px]':'min-h-[450px]'} h-max rounded-2xl flex flex-col justify-start items-center hover:bg-[#191919] transition-all duration-400 ease-in-out border-[.1px] border-transparent hover:border-[#383838] group hover:shadow-2xl shadow overflow-hidden cursor-pointer`}
                         >
                             <div className={`img w-full bg-cover bg-center ${location.pathname === '/Shop' ?'h-[250px]':'h-[320px]'} overflow-hidden`}>
-                                <img src={`http://localhost:3200${Array.isArray(item?.images) ? item?.images[0] : item?.images}`} className='object-center object-cover w-full h-full' alt={item.title || 'Product image'} />
+                                <img src={`https://saair-backend-production.up.railway.app${Array.isArray(item?.images) ? item?.images[0] : item?.images}`} className='object-center object-cover w-full h-full' alt={item.title || 'Product image'} />
                             </div>
                             <div className="text px-6 py-2 w-full h-max ">
                                 <div className="flex justify-between items-center">
