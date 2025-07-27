@@ -42,7 +42,7 @@ const AdminProductDetails = () => {
     // Set the first image as the main image once product data is loaded
     useEffect(() => {
         if (selectedProduct && selectedProduct.images && selectedProduct.images.length > 0) {
-            setMainImage(`http://localhost:3200${selectedProduct.images[0]}`);
+            setMainImage(`https://saair-backend-production.up.railway.app${selectedProduct.images[0]}`);
         } else {
             setMainImage(null);
         }
@@ -166,12 +166,12 @@ const AdminProductDetails = () => {
                                 <div
                                     key={index}
                                     className={`w-full aspect-square overflow-hidden rounded-lg border-2 ${
-                                        mainImage === `http://localhost:3200${imgSrc}` ? 'border-cyan-400' : 'border-gray-700 hover:border-gray-500'
+                                        mainImage === `https://saair-backend-production.up.railway.app${imgSrc}` ? 'border-cyan-400' : 'border-gray-700 hover:border-gray-500'
                                     } bg-gray-900 cursor-pointer transition-all duration-200 ease-in-out`}
-                                    onClick={() => setMainImage(`http://localhost:3200${imgSrc}`)}
+                                    onClick={() => setMainImage(`https://saair-backend-production.up.railway.app${imgSrc}`)}
                                 >
                                     <img
-                                        src={`http://localhost:3200${imgSrc}`}
+                                        src={`https://saair-backend-production.up.railway.app${imgSrc}`}
                                         alt={`${selectedProduct.title} - Thumbnail ${index + 1}`}
                                         className="w-full h-full object-cover object-center block"
                                     />
