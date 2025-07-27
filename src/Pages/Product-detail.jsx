@@ -169,7 +169,7 @@ export default function ProductDetailPage() {
                         <div className="w-full max-h-[430px] flex-shrink-0 mb-6 lg:mb-4 bg-[#141414] rounded-lg overflow-hidden flex items-center justify-center ">
                             {mainImage ? (
                                 <img
-                                    src={`http://localhost:3200${mainImage}`}
+                                src={`https://saair-backend-production.up.railway.app${mainImage}`}
                                     alt={selectedProduct.title}
                                     className="w-full h-auto object-contain max-h-[500px]"
                                 />
@@ -193,7 +193,7 @@ export default function ProductDetailPage() {
                                             onClick={() => handleThumbnailClick(image)}
                                         >
                                             <img
-                                                src={`http://localhost:3200${image}`}
+                                                src={`https://saair-backend-production.up.railway.app${image}`}
                                                 alt={`Thumbnail ${index + 1}`}
                                                 className="w-full h-full object-contain"
                                             />
