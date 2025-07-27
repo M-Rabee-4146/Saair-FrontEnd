@@ -40,18 +40,18 @@ export default function CartItem({ item }) {
     return (
         <div className="flex flex-col sm:flex-row items-start sm:items-center bg-[#141414] rounded-lg p-4 sm:p-6 mb-4 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.005]">
             {/* Product Image */}
-            <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 bg-[#080708] rounded-md overflow-hidden flex items-center justify-center p-2 mb-4 sm:mb-0 sm:mr-6">
+            <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 bg-[#080708] rounded-md overflow-hidden flex items-center justify-center  mb-4 sm:mb-0 sm:mr-6">
                 <img
                     src={`http://localhost:3200${item.images?.[0]}`}
                     alt={item.title}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                 />
             </div>
 
             {/* Product Details */}
             <div className="flex-grow flex flex-col sm:flex-row sm:items-center justify-between w-full">
                 <div className="flex-grow mb-4 sm:mb-0">
-                    <h3 className="text-xl sm:text-2xl font-gothic-1 text-white leading-tight mb-1">{item.title}</h3>
+                    <h3 className="text-xl sm:text-3xl font-saira font-semibold text-white leading-tight mb-1">{item.title}</h3>
                     <p className="text-gray-400 text-sm sm:text-base font-poppins mb-2">
                         {item.color !== 'N/A' && (
                             <span className="flex items-center">
@@ -64,7 +64,7 @@ export default function CartItem({ item }) {
                             </span>
                         )}
                         {item.size !== 'N/A' && (
-                            <span className="ml-0 sm:ml-4">Size: <span className="font-semibold">{item.size}</span></span>
+                            <span className="">Size: <span className="font-semibold">{item.size}</span></span>
                         )}
                     </p>
                     <p className="text-cyan-400 text-lg sm:text-xl font-saira font-semibold">Rs: {item.totalprice?.toLocaleString()}</p>
@@ -74,14 +74,14 @@ export default function CartItem({ item }) {
                 <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-0 sm:mr-6">
                     <button
                         onClick={handleDecrease}
-                        className="px-3 py-1 sm:px-4 sm:py-2 bg-[#080708] text-cyan-400 rounded-lg border border-cyan-400 hover:bg-cyan-400 hover:text-[#080708] transition-colors text-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-3 py-1 sm:px-2 sm:py-0 bg-[#080708] text-cyan-400 rounded-lg border border-cyan-400 hover:bg-cyan-400 hover:text-[#080708] transition-colors text-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         -
                     </button>
                     <span className="text-2xl sm:text-3xl font-saira text-white">{item.quantity}</span>
                     <button
                         onClick={handleIncrease}
-                        className="px-3 py-1 sm:px-4 sm:py-2 bg-[#080708] text-cyan-400 rounded-lg border border-cyan-400 hover:bg-cyan-400 hover:text-[#080708] transition-colors text-lg font-bold"
+                        className="px-3 py-1 sm:px-2 sm:py-0 bg-[#080708] text-cyan-400 rounded-lg border border-cyan-400 hover:bg-cyan-400 hover:text-[#080708] transition-colors text-lg font-bold"
                     >
                         +
                     </button>

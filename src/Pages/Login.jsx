@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router';
 import Navbar from '../Components/Navbar';
 import Navbar2 from '../Components/Navbar2';
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import axiosinstance from '../axios/axios';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
@@ -28,10 +28,10 @@ const Login = () => {
     );
     //     // Simulate loading end after 4 seconds
     useEffect(() => {
-
         //         const timer = setTimeout(() => setLoading(false), 3000);
         //         return () => clearTimeout(timer);
     }, []);
+
     const [formdata, setformdata] = useState({ email: '', password: '' })
     const [Forgetformdata, setForgetformdata] = useState({ email: '' })
     const [formNum, setformNum] = useState('form1')
@@ -48,15 +48,21 @@ const Login = () => {
             const response = await dispatch(Loginuser(formdata))
             // console.log(response)
             if (Loginuser.fulfilled.match(response)) {
-                toast.success(response?.payload?.message);
-                if(response.payload.user.role=='admin'){
+                // toast.success(response?.payload?.message);
+                if (response.payload.user.role == 'admin') {
                     navigate('/Dashboard')
                 }
+                else if (location.state.from == 'signup') {
+                    navigate('/Shop')
+                }else{
+                    navigate(-1)
+                }
+                
 
             }
             else {
-                toast.error(response?.payload)
-            }
+                toast.error(response?.payload ,{style:{ background:'#191919',color:'white',border:'1px solid cyan'}})
+            }   
         } catch (error) {
             toast.error(error)
         }

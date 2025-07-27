@@ -1,6 +1,6 @@
 // Redux/features/orderSlice.js
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axiosinstance from "../../axios/axios"; // Assuming this path is correct for your axios instance
+import axiosinstance from "@/axios/axios"; // Assuming this path is correct for your axios instance
 
 const API_BASE_URL = "http://localhost:3200/api";
 
@@ -68,7 +68,7 @@ export const updateOrderStatus = createAsyncThunk(
                 }
                 
             });
-            console.log(response)
+            // console.log(response)
             return response.data; // Should return the updated order
         } catch (error) {
             return rejectWithValue(error.response?.data?.message || error.message);

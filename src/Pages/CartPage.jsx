@@ -37,12 +37,12 @@ export default function CartPage() {
             <Navbar2 />
 
             <div className="container mx-auto px-4 py-8 pt-16 md:pt-20 flex-1">
-                <h1 className="text-4xl md:text-5xl font-gothic-1 text-white mb-8 text-center">Your Shopping Cart</h1>
+                <h1 className="text-4xl md:text-6xl font-gothic-1 text-white mb-8 text-center">Your Shopping Cart</h1>
 
                 {cartItems?.length === 0 ? (
                     <div className="text-center py-10">
                         <p className="text-xl text-gray-400 mb-4">Your cart is empty.</p>
-                        <p className="text-md text-gray-500">Looks like you haven't added anything to your cart yet. Go <a href="/" className="text-cyan-400 hover:underline">shopping</a>!</p>
+                        <p className="text-md text-gray-500">Looks like you haven't added anything to your cart yet. Go <a href="/Shop" className="text-cyan-400 hover:underline">shopping</a>!</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -62,7 +62,7 @@ export default function CartPage() {
                             <div className="mt-6 flex justify-end">
                                 <button
                                     onClick={handleClearCart}
-                                    className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-saira text-base sm:text-lg shadow-md"
+                                    className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-300 ease-in-out font-saira text-base sm:text-base shadow-md"
                                 >
                                     Clear Cart
                                 </button>
@@ -70,22 +70,22 @@ export default function CartPage() {
                         </div>
 
                         {/* Order Summary */}
-                        <div className="lg:col-span-1 bg-[#141414] rounded-lg p-6 sm:p-8 shadow-lg">
-                            <h2 className="text-2xl sm:text-3xl font-gothic-1 text-white mb-6 border-b border-gray-700 pb-4">Order Summary</h2>
+                        <div className="lg:col-span-1 bg-[#141414] rounded-l p-6 sm:p-8 shadow-lg">
+                            <h2 className="text-2xl sm:text-2xl font-saira font-semibold text-white mb-6 border-b border-gray-700 pb-4">Order Summary</h2>
 
                             <div className="flex justify-between items-center mb-4">
-                                <span className="text-gray-300 text-lg font-poppins">Subtotal ({cartItems?.reduce((acc, item) => acc + item.quantity, 0)} items)</span>
+                                <span className="text-gray-300 text-lg font-saira">Subtotal ({cartItems?.reduce((acc, item) => acc + item.quantity, 0)} items)</span>
                                 <span className="text-white text-xl font-saira font-semibold">Rs: {totalAmount?.toLocaleString()}</span>
                             </div>
 
                             <div className="border-t border-gray-700 pt-4 mt-6 flex justify-between items-center">
-                                <span className="text-white text-xl sm:text-2xl font-gothic-1">Order Total</span>
+                                <span className="text-white text-xl font-semibold sm:text-2xl font-saira">Order Total</span>
                                 <span className="text-cyan-400 text-2xl sm:text-3xl font-saira font-bold">Rs: {totalAmount?.toLocaleString()}</span>
                             </div>
 
                             <button
                                 onClick={handleCheckout}
-                                className="w-full bg-cyan-400 text-black font-bold text-lg sm:text-xl font-saira py-3 rounded-lg mt-8 hover:bg-cyan-600 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full bg-cyan-400 text-black font-bold text-lg sm:text-lg font-saira py-2 rounded-lg mt-8 hover:bg-cyan-600 hover:text-white transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                                 disabled={cartItems?.length === 0}
                             >
                                 Proceed to Checkout

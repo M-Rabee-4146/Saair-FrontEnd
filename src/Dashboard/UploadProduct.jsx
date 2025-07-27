@@ -119,11 +119,11 @@ const UploadProduct = () => {
     allImages.push(...formData.galleryImages);
 
     // Check title length
-    const titleWords = formData.title.trim().split(/\s+/);
-    if (titleWords.length > 4) { // Changed condition to 4 words as per placeholder
-      toast.error("Product title should be 4 words or less for best display.");
-      return;
-    }
+    // const titleWords = formData.title.trim().split(/\s+/);
+    // if (titleWords.length > 4) { // Changed condition to 4 words as per placeholder
+    //   toast.error("Product title should be 4 words or less for best display.");
+    //   return;
+    // }
 
     const finalData = new FormData();
 

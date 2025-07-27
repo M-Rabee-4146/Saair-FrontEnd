@@ -1,0 +1,21 @@
+// jsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": "src", // This tells VS Code that 'src' is the base for non-relative imports
+    "jsx": "react-jsx", // Essential for React JSX compilation in VS Code
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

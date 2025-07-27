@@ -48,7 +48,7 @@ export default function ContactUs() {
       <div className="flex flex-col md:flex-row pt-20 md:pt-24 px-4 md:p-10 gap-12">
         {/* Left side */}
         <div className="flex-1">
-          <h1 className="text-6xl mb-6 font-gothic-1">Contact Us</h1>
+          <h1 className="text-8xl mb-6 font-gothic-1">Contact Us</h1>
           <p className="text-lg mb-6 text-gray-300 max-w-lg font-poppins">
             Saair is your trusted destination for premium timepieces. Crafted for elegance, designed for simplicity, and made to move with you—because every traveler deserves a timeless companion.
           </p>

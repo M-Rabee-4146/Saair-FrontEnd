@@ -22,7 +22,6 @@ import ManageProducts from './Dashboard/ManageProducts'
 import { PersistGate } from 'redux-persist/integration/react'
 import AdminProductDetails from './Dashboard/AdminProductDetails'
 import AdminOrders from './Dashboard/AdminOrders'
-import AdminOrderDetails from './Dashboard/AdminOrderDetail'
 import AdminSales from './Dashboard/AdminSales'
 import AdminEditProduct from './Dashboard/AdminProductEdit'
 import AboutUsPage from './Pages/AboutUsPage'
@@ -41,7 +40,6 @@ const App = () => {
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <Routes>
-              {/* <Route path="/Signup" element={<LoginChecker><Signup/></LoginChecker>} /> */}
               <Route path="/" element={<Home />} />
               <Route path="/Signup" element={<Signup />} />
               <Route path="/Login" element={<Login />} />
@@ -50,7 +48,7 @@ const App = () => {
               <Route path="/Shop/:initialSearchTerm?" element={<Shop />} />
               <Route path="/Contact-Us" element={<ContactUs />} />
               <Route path="/About" element={<AboutUsPage />} />
-              <Route path="/Cart" element={<AuthGuard requireAdmin={false}><CartPage /></AuthGuard>} /> {/* Add this line */}
+              <Route path="/Cart" element={<AuthGuard requireAdmin={false}><CartPage /></AuthGuard>} />
               <Route path="/Checkout" element={<AuthGuard requireAdmin={false}><CheckoutPage /></AuthGuard>} />
               <Route path="/Product/:id" element={<ProductDetailPage />} />
               <Route path="/Order-confirmation/:id" element={<OrderConfirmation />} />
@@ -62,14 +60,13 @@ const App = () => {
                 <Route path="manage-products" element={<ManageProducts />} />
                 <Route path="upload-product" element={<UploadProduct />} />
                 <Route path="orders" element={<AdminOrders />} />
-                <Route path="order-details/:id" element={<AdminOrderDetail />} /> {/* Detail page route */}
+                <Route path="order-details/:id" element={<AdminOrderDetail />} />
                 <Route path="sales" element={<AdminSales />} />
                 <Route path="contact-forms" element={<ContactUsForms />} />
                 <Route path="product-detail/:id" element={<AdminProductDetails />} />
                 <Route path="product-edit/:id" element={<AdminEditProduct />} />
               </Route>
 
-              {/* <Home /> */}
             </Routes>
           </PersistGate>
         </Provider>

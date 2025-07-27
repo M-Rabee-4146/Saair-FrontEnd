@@ -202,7 +202,7 @@ const AdminOrders = () => {
     const orderStatusOptions = ['All', 'Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
 
     return (
-        <div className="min-h-screen bg-[#080708] text-white md:px-4 md:py-5">
+        <div className="min-h-max bg-[#080708] text-white md:px-4 md:py-5">
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-6xl font-gothic-1 mb-4">All Orders</h1>
                 <p className="text-md mb-8 text-gray-400 max-w-2xl font-poppins">

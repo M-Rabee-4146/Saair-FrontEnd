@@ -3,14 +3,29 @@ import { Bars3Icon, HomeIcon, MagnifyingGlassIcon, PhoneIcon, QuestionMarkCircle
 import { UserIcon } from '@heroicons/react/24/outline';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router'; // Ensure Link is from react-router-dom
+import { Link, useLocation, useNavigate } from 'react-router'; // Corrected import to react-router-dom
+import { Logout } from '../Redux/features/auth';
+import { useDispatch } from 'react-redux';
 
-const Navbar2 = () => { 
+const Navbar2 = () => {
+    const location=useLocation()
+    const token=localStorage.getItem('token')
+    const role=localStorage.getItem('role')
+    const dispatch=useDispatch()
     const [mobileOpen, setMobileOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false); // State for mobile search input visibility
     const [searchValue, setSearchValue] = useState(''); // Initialize with empty string
-    const [BackdropOpen, setBackdropOpen] = useState(false); // State for desktop search backdrop
+    const [backdropOpen, setBackdropOpen] = useState(false); // State for desktop search backdrop, renamed for consistency
     const navigate = useNavigate();
+
+    // Helper function to manage body scroll lock
+    const toggleScrollLock = (shouldLock) => {
+        if (shouldLock) {
+            document.body.classList.add('scroll-lock');
+        } else {
+            document.body.classList.remove('scroll-lock');
+        }
+    };
 
     // Function to handle desktop search submission
     const handleDesktopSearchSubmit = (e) => {
@@ -18,8 +33,9 @@ const Navbar2 = () => {
         if (searchValue.trim()) { // Only navigate if search value is not empty
             navigate(`/Shop/${encodeURIComponent(searchValue.trim())}`); // Navigate with search term as URL param
             setBackdropOpen(false); // Close the search overlay
-            document.body.classList.remove('scroll-lock'); // Release scroll lock
+            toggleScrollLock(false); // Release scroll lock
             setSearchValue(''); // Clear search input after navigation
+            // console.log('form submitted')
         }
     };
 
@@ -30,25 +46,54 @@ const Navbar2 = () => {
             navigate(`/Shop/${encodeURIComponent(searchValue.trim())}`); // Navigate with search term as URL param
             setMobileOpen(false); // Close mobile menu
             setSearchOpen(false); // Close mobile search input
-            document.body.classList.remove('scroll-lock'); // Release scroll lock
+            toggleScrollLock(false); // Release scroll lock
             setSearchValue(''); // Clear search input after navigation
         }
     };
 
+    // Handler for desktop search button click
+    const handleDesktopSearchClick = () => {
+        setBackdropOpen(!backdropOpen);
+        toggleScrollLock(!backdropOpen); // Toggle scroll lock based on new state
+    };
+
+    // Handler for mobile menu icon click
+    const handleMobileMenuClick = () => {
+        setMobileOpen(!mobileOpen);
+        toggleScrollLock(!mobileOpen); // Toggle scroll lock based on new state
+
+        // Close mobile search when opening/closing main mobile menu
+        if (searchOpen) setSearchOpen(false);
+        // Clear search value if opening main mobile menu
+        if (!mobileOpen) setSearchValue('');
+    };
+
+    // Handler for mobile navigation links click
+    const handleMobileNavLinkClick = () => {
+        setMobileOpen(false);
+        toggleScrollLock(false); // Release scroll lock
+        setSearchValue(''); // Clear search value
+    };
+
+    const logoutNow=()=>{
+        dispatch(Logout())
+        navigate('/')
+    }
 
     return (
-        <AnimatePresence mode='wait' className='relative'>
+        <AnimatePresence mode='wait'>
             <motion.nav
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: .5 }}
-                className="fixed top-0 w-full z-50 bg-[#00000040] border-b border-b-[#0000001c] text-gray-100"
+                transition={{ duration: .5,delay:location.pathname==='/'?3.4:.1 }}
+                // Ensure navbar itself is always on top (z-50 is good)
+                className="fixed top-0 w-full md:z-50 z-[99] bg-[#00000040] border-b border-b-[#0000001c] text-gray-100"
             >
                 <div className=" h-[60px] md:mx-4 px-6 py-1 backdrop-filter backdrop-blur-[2px] flex justify-between items-center relative">
 
                     {/* Logo */}
-                    <div className="flex items-center space-x-3">
-                        <h1 className='text-cyan-400 text-3xl -mb-2 font-hadayat min-w-[150px]'>Saair</h1>
+                    <div className="flex items-center space-x-3 z-[101]"> {/* Ensure logo is above mobile menu */}
+                        <h1 className='text-cyan-400 text-3xl -mb-2 font-hadayat lg:min-w-[150px]'>Saair</h1>
                     </div>
 
                     {/* Desktop Links */}
@@ -70,34 +115,35 @@ const Navbar2 = () => {
                     </div>
 
                     {/* Right Section */}
-                    <div className="hidden md:flex items-center space-x-4">
-                        <button onClick={() => { setBackdropOpen(!BackdropOpen); document.body.classList.toggle('scroll-lock') }}>
+                    <div className="hidden md:flex items-center space-x-4 z-[101]"> {/* Ensure these are above mobile menu */}
+                        <button onClick={handleDesktopSearchClick}>
                             <MagnifyingGlassIcon className='size-4 hover:text-cyan-400 hover:scale-125 transition-all duration-300 ease-in-out ' />
                         </button>
                         <Link to={'/Cart'}><ShoppingBagIcon className='size-4 hover:text-cyan-400 hover:scale-125 transition-all duration-300 ease-in-out ' /> </Link>
-                        <Link to="/Signup" className="hover:border-cyan-400 hover:text-gray-90 font-[450] py-1 px-6 rounded-xl border border-[#ffffff25] bg-[#fefefe1f] hover:shadow-md transition duration-200 backdrop-filter backdrop-blur-sm shadow-xl hover:shadow-cyan-600 font-saira">
+                      {token && role? role=='Admin'? <button onClick={navigate('/Dashboard')} className="hover:border-cyan-400 hover:text-gray-90 font-[450] py-1 px-6 rounded-xl border border-[#ffffff25] bg-[#fefefe1f] hover:shadow-md transition duration-200 backdrop-filter backdrop-blur-sm shadow-xl hover:shadow-cyan-600 font-saira">
+                            <div className="flex justify-between items-center "> <UserIcon className='size-4 mr-2' /> Dashboard</div>
+                        </button>:<button onClick={logoutNow} className="hover:border-cyan-400 hover:text-gray-90 font-[450] py-1 px-6 rounded-xl border border-[#ffffff25] bg-[#fefefe1f] hover:shadow-md transition duration-200 backdrop-filter backdrop-blur-sm shadow-xl hover:shadow-cyan-600 font-saira">
+                            <div className="flex justify-between items-center "> <UserIcon className='size-4 mr-2' /> Logout</div>
+                        </button>:<Link to="/Signup" className="hover:border-cyan-400 hover:text-gray-90 font-[450] py-1 px-6 rounded-xl border border-[#ffffff25] bg-[#fefefe1f] hover:shadow-md transition duration-200 backdrop-filter backdrop-blur-sm shadow-xl hover:shadow-cyan-600 font-saira">
                             <div className="flex justify-between items-center "> <UserIcon className='size-4 mr-2' /> Sign up</div>
-                        </Link>
+                        </Link>}
                     </div>
 
                     {/* Mobile Menu Icon */}
-                    <div className="md:hidden -mb-1">
-                        <button onClick={() => {
-                            setMobileOpen(!mobileOpen);
-                            document.body.classList.toggle('scroll-lock');
-                            // Close mobile search when opening/closing main mobile menu
-                            if (searchOpen) setSearchOpen(false);
-                            // Clear search value if opening main mobile menu
-                            if (!mobileOpen) setSearchValue('');
-                        }} className="text-white">
+                    <div className="md:hidden -mb-1 z-[101]"> {/* Ensure this is above mobile menu */}
+                        <button onClick={handleMobileMenuClick} className="text-white">
                             {mobileOpen ? <XMarkIcon className='size-6' /> : <Bars3Icon className='size-6' />}
                         </button>
                     </div>
                 </div>
 
-                {/* Mobile Menu */}
-                <div
-                    className={`md:hidden bg-[#080708] backdrop-filter backdrop-blur-sm text-white font-semibold absolute h-[95vh] w-[75vw] ${mobileOpen ? 'translate-x-0' : '-translate-x-[600px]'} transition-all duration-300 ease-in-out relative`}
+                {/* Mobile Menu (Sidebar) */}
+                <motion.div
+                    initial={{ x: '-100%' }} // Start off-screen to the left
+                    animate={{ x: mobileOpen ? '0%' : '-100%' }} // Animate to 0% for open, -100% for closed
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    // Increased z-index to be above most content but below search backdrop when open
+                    className={`md:hidden bg-[#080708] text-white font-semibold fixed top-0 left-0 h-screen w-[75vw] overflow-y-auto z-[90]`}
                 >
                     <div className={`bg-[#131212] ${searchOpen ? 'h-35' : 'h-15'} transition-all duration-300 ease-in-out px-2 overflow-hidden`}>
                         <div className="flex justify-between items-center h-14 px-4">
@@ -107,21 +153,21 @@ const Navbar2 = () => {
                             </button>
                         </div>
                         {/* Mobile Search Input */}
-                        <form onSubmit={handleMobileSearchSubmit}> {/* Use onSubmit */}
+                        <form onSubmit={handleMobileSearchSubmit}>
                             <input
                                 type="search"
                                 name="search"
-                                value={searchValue} // Bind value to state
-                                onChange={(e) => setSearchValue(e.target.value)} // Update state on change
-                                className={`border border-gray-500 active:border-cyan-400 focus:border-cyan-400 focus:shadow-lg shadow-cyan-400 w-[90%] h-14 rounded-xl my-2 mx-4 p-4 active:outline-none outline outline-none`}
+                                value={searchValue}
+                                onChange={(e) => setSearchValue(e.target.value)}
+                                className={`border border-gray-500 active:border-cyan-400 focus:border-cyan-400 focus:shadow-lg shadow-cyan-400 w-[90%] h-14 rounded-xl my-2 mx-4 p-4 active:outline-none outline outline-none text-gray-800`}
                                 id="mobile-search"
-                                placeholder='Search files here'
+                                placeholder='Search products...' // More specific placeholder
                             />
                             {/* Hidden submit button for mobile search form, triggered by pressing Enter */}
                             <button type="submit" className="hidden"></button>
                         </form>
                     </div>
-                    <div className="space-y-8 pr-6 pl-3 pb-12 w-[75vw] mt-8 relative">
+                    <div className="space-y-8 pr-6 pl-3 pb-12 w-[75vw] mt-8"> {/* Removed relative from here */}
                         {[
                             { title: `Home`, to: '/', icon: <HomeIcon className='size-6' /> },
                             { title: 'Shop', to: '/Shop', icon: <ShoppingBagIcon className='size-6' /> },
@@ -133,46 +179,51 @@ const Navbar2 = () => {
                                 key={item.title}
                                 to={item.to}
                                 className="block hover:text-cyan-400 hover:font-bold font-normal transition duration-150 font-saira active:text-cyan-400 hover:scale-105 rounded-lg px-2 py-2 items-center space-x-3"
-                                onClick={() => { // Close mobile menu and release scroll lock on navigation
-                                    setMobileOpen(false);
-                                    document.body.classList.remove('scroll-lock');
-                                    setSearchValue(''); // Clear search value
-                                }}
+                                onClick={handleMobileNavLinkClick}
                             >
                                 <h1 className='flex text-xl'> <span className='mr-7'>{item.icon}</span>{item.title}</h1>
                             </Link>
                         ))}
                     </div>
                     <h4 className='absolute bottom-10 text-sm text-gray-700 mx-4'>&#169; Copyright 2025-Designed by Rabee</h4>
-                </div>
+                </motion.div>
 
                 {/* Desktop Search Backdrop Overlay */}
-                <div
-                    onClick={() => { // Close backdrop and release scroll lock when clicking outside search input
-                        setBackdropOpen(false);
-                        document.body.classList.remove('scroll-lock');
-                        setSearchValue(''); // Clear search value
-                    }}
-                    className={`bg-[#08070860] h-screen absolute w-full top-0 backdrop-filter backdrop-blur-sm transition-all duration-300 ease-in-out ${BackdropOpen ? 'scale-100 z-10' : 'scale-0 -z-10'}`}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: backdropOpen ? 1 : 0, scale: backdropOpen ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  
+                    // Higher z-index for the backdrop so it appears on top of everything
+                    className={`bg-[#08070860] fixed inset-0 w-full h-full backdrop-filter backdrop-blur-sm z-[100] ${backdropOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
                 >
-                    <div className="search flex justify-center items-center h-full" onClick={(e) => e.stopPropagation()}> {/* Prevent click from closing backdrop */}
-                        <form onSubmit={handleDesktopSearchSubmit} className="relative w-max"> {/* Use onSubmit */}
+                    <div className="search flex justify-center items-center h-full"  onClick={() => { // Close backdrop and release scroll lock when clicking outside search input
+                        setBackdropOpen(false);
+                        toggleScrollLock(false);
+                        setSearchValue('');
+                         // Clear search value
+                    }}>
+                         {/* Prevent click from closing backdrop */}
+                         <div onClick={(e)=>e.stopPropagation()} className="">
+                        <form onSubmit={handleDesktopSearchSubmit} className="relative"> {/* Added relative to form for button positioning */}
                             <input
                                 type="search"
                                 name="search"
-                                value={searchValue} // Bind value to state
-                                onChange={(e) => setSearchValue(e.target.value)} // Update state on change
+                                value={searchValue}
+                                onClick={(e)=>e.stopPropagation()}
+                                onChange={(e) =>{ setSearchValue(e.target.value)}}
                                 className={`border border-gray-500 active:border-cyan-400 focus:border-cyan-400 focus:shadow-lg shadow-cyan-400 w-[500px] h-[45px] rounded-2xl p-4 active:outline-none outline outline-none text-white`}
                                 id="desktop-search"
-                                placeholder='Search files here '
+                                placeholder='Search products here'
                             />
                             {/* Submit button for desktop search form */}
                             <button type="submit" className="absolute right-[1px] top-[1px] h-[43px] w-[75px] bg-[#fefefe1f] text-gray-100 rounded-xl flex justify-center items-center hover:bg-[#fefefe2f] transition-colors duration-200">
                                 <MagnifyingGlassIcon className='size-5' />
                             </button>
                         </form>
+                        </div>
                     </div>
-                </div>
+                </motion.div>
 
             </motion.nav>
         </AnimatePresence>

@@ -11,7 +11,7 @@ import {
 } from '@heroicons/react/24/outline'; // Added new icons
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetOneUser, Logout } from '../../Redux/features/auth';
+import { GetOneUser, Logout } from '@/Redux/features/auth';
 
 // Define link types for dynamic icons and potentially notification counts
 const mainLinks = [
@@ -41,7 +41,7 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
   // New state for notification counts
   const [pendingOrdersCount, setPendingOrdersCount] = useState(pendingorders.length);
   const [pendingFormsCount, setPendingFormsCount] = useState(pendingForms.length);
-console.log(pendingOrdersCount)
+// console.log(pendingOrdersCount)
 
   useEffect(() => {
     if (id) {

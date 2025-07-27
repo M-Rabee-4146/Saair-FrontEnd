@@ -62,12 +62,12 @@ const Footer = () => {
       {/* Scroll to Top */}
       <div className="text-center py-3 border-t border-gray-950  text-gray-500 text-sm">
         © 2025 Saair. All rights reserved.
-        <button
+        {/* <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="fixed z-50  bottom-6 right-6 bg-cyan-400 text-black p-3 rounded-full shadow-lg hover:bg-cyan-600 transition"
         >
           <ChevronUpIcon className="size-5" />
-        </button>
+        </button> */}
       </div>
     </footer>
   );

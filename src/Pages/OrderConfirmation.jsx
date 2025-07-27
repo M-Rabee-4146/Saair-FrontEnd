@@ -23,7 +23,7 @@ const OrderConfirmation = () => {
     }, [id, dispatch]); // Added dispatch to dependency array for best practice
 
     // Log the order to see the data coming from Redux
-    console.log("Order Data from Redux:", order);
+    // console.log("Order Data from Redux:", order);
 
     if (loading) {
         return (

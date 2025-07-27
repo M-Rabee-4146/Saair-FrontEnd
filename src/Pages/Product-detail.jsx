@@ -166,7 +166,7 @@ export default function ProductDetailPage() {
                     {/* Left Column (Images & Thumbnails) */}
                     <div className="flex flex-col lg:flex-col lg:items-start">
                         {/* Main Product Image */}
-                        <div className="w-full max-h-[430px] flex-shrink-0 mb-6 lg:mb-4 bg-[#141414] rounded-lg overflow-hidden flex items-center justify-center p-4 md:p-8">
+                        <div className="w-full max-h-[430px] flex-shrink-0 mb-6 lg:mb-4 bg-[#141414] rounded-lg overflow-hidden flex items-center justify-center ">
                             {mainImage ? (
                                 <img
                                     src={`http://localhost:3200${mainImage}`}
@@ -251,7 +251,7 @@ export default function ProductDetailPage() {
                         <div className="flex mb-4 justify-between items-center">
                             {/* Size Display (since it's a single string, not an array of choices) */}
                             <div className="">
-                                <h3 className="md:text-2xl text-xl font-saira font-semibold text-white">Size: <span className="font-normal text-gray-300">{selectedSizeValue}</span></h3>
+                                <h3 className="md:text-2xl text-xl font-saira font-semibold text-white">Size: <span className="font-normal text-gray-300">{selectedSizeValue}mm</span></h3>
                             </div>
 
                             {/* Quantity Control */}

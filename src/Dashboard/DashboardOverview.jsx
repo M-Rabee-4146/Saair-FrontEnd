@@ -15,7 +15,7 @@ const DashboardOverview = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products); // Assuming your products are here
   const orders = useSelector((state) => state.order.orders); // Assuming your products are here
-  console.log(orders)
+  // console.log(orders)
 
   // Placeholder for real data that would come from your backend
   const [summaryData, setSummaryData] = useState({

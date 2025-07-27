@@ -98,7 +98,7 @@ export default function CheckoutPage() {
 
         // Check if the order creation was successful
         if (createOrder.fulfilled.match(resultAction)) {
-            console.log(resultAction.payload)
+            // console.log(resultAction.payload)
             toast.success("Order placed successfully!");
             dispatch(ClearCart()); // Clear the cart after a successful order
             navigate(`/order-confirmation/${resultAction.payload.order._id}`);
@@ -130,12 +130,12 @@ export default function CheckoutPage() {
             <Navbar2 />
 
             <div className="container mx-auto px-4 py-8 pt-16 md:pt-20 flex-1">
-                <h1 className="text-4xl md:text-5xl font-gothic-1 text-white mb-8 text-center">Checkout</h1>
+                <h1 className="text-4xl md:text-6xl uppercase font-gothic-1 text-white mb-8 text-center">Checkout</h1>
 
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Shipping Information Section */}
                     <div className="lg:col-span-2 bg-[#141414] rounded-lg p-6 sm:p-8 shadow-lg">
-                        <h2 className="text-2xl sm:text-3xl font-gothic-1 text-white mb-6 border-b border-gray-700 pb-4">Shipping Information</h2>
+                        <h2 className="text-2xl sm:text-2xl font-semibold font-saira text-white mb-6 border-b border-gray-700 pb-4">Shipping Information</h2>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div>
@@ -146,7 +146,7 @@ export default function CheckoutPage() {
                                     name="fullName"
                                     value={formData.fullName}
                                     onChange={handleChange}
-                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-all duration-300 hover:border-cyan-400"
                                     placeholder="John Doe"
                                     required
                                 />
@@ -159,7 +159,7 @@ export default function CheckoutPage() {
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-all duration-300 hover:border-cyan-400"
                                     placeholder="john.doe@example.com"
                                     required
                                 />
@@ -172,7 +172,7 @@ export default function CheckoutPage() {
                                     name="phoneNumber"
                                     value={formData.phoneNumber}
                                     onChange={handleChange}
-                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-all duration-300 hover:border-cyan-400"
                                     placeholder="+1 555 123 4567"
                                     required
                                 />
@@ -185,7 +185,7 @@ export default function CheckoutPage() {
                                     name="address"
                                     value={formData.address}
                                     onChange={handleChange}
-                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-all duration-300 hover:border-cyan-400"
                                     placeholder="123 Main St"
                                     required
                                 />
@@ -198,7 +198,7 @@ export default function CheckoutPage() {
                                     name="city"
                                     value={formData.city}
                                     onChange={handleChange}
-                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-all duration-300 hover:border-cyan-400"
                                     placeholder="New York"
                                     required
                                 />
@@ -211,7 +211,7 @@ export default function CheckoutPage() {
                                     name="postalCode"
                                     value={formData.postalCode}
                                     onChange={handleChange}
-                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-all duration-300 hover:border-cyan-400"
                                     placeholder="10001"
                                     required
                                 />
@@ -224,7 +224,7 @@ export default function CheckoutPage() {
                                     name="country"
                                     value={formData.country}
                                     onChange={handleChange}
-                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                                    className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-all duration-300 hover:border-cyan-400"
                                     placeholder="United States"
                                     required
                                 />
@@ -232,7 +232,7 @@ export default function CheckoutPage() {
                         </div>
 
                         {/* Payment Method Section */}
-                        <h2 className="text-2xl sm:text-3xl font-gothic-1 text-white mb-6 border-b border-gray-700 pb-4 mt-8">Payment Method</h2>
+                        <h2 className="text-2xl sm:text-2xl font-semibold font-saira text-white mb-6 border-b border-gray-700 pb-4 mt-8">Payment Method</h2>
                         <div className="space-y-4">
                             <label className="flex items-center text-gray-300 text-lg cursor-pointer">
                                 <input
@@ -256,7 +256,7 @@ export default function CheckoutPage() {
                         </div>
 
                         {/* Additional Options Section (including Gift Wrap) */}
-                        <h2 className="text-2xl sm:text-3xl font-gothic-1 text-white mb-6 border-b border-gray-700 pb-4 mt-8">Additional Options</h2>
+                        <h2 className="text-2xl sm:text-2xl font-semibold font-saira text-white mb-6 border-b border-gray-700 pb-4 mt-8">Additional Options</h2>
                         <div className="mb-6">
                             <label className="flex items-center text-gray-300 text-lg cursor-pointer">
                                 <input
@@ -270,8 +270,8 @@ export default function CheckoutPage() {
                             </label>
 
                             {/* New: Gift Wrap Caption Input (conditionally rendered) */}
-                            {formData.isGiftWrapped && (
-                                <div className="mt-4 pl-8"> {/* Indent the caption field */}
+                          
+                                <div className={`mt-4 pl-8 transition-all duration-300 ease-in-out origin-top ${formData.isGiftWrapped?'scale-y-100 ':'scale-y-0 hidden'}`}> {/* Indent the caption field */}
                                     <label htmlFor="giftWrapCaption" className="block text-gray-300 text-sm font-semibold mb-2">Gift Message/Caption</label>
                                     <textarea
                                         id="giftWrapCaption"
@@ -279,14 +279,13 @@ export default function CheckoutPage() {
                                         value={formData.giftWrapCaption}
                                         onChange={handleChange}
                                         rows="3"
-                                        className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                                        className="w-full p-3 bg-[#080708] border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-all duration-300 hover:border-cyan-400"
                                         placeholder="E.g., 'Happy Birthday, Mom! Love, [Your Name]'"
                                         maxLength="200"
                                         required // Make required if gift wrap is selected
                                     ></textarea>
                                     <p className="text-gray-500 text-sm mt-1">{formData.giftWrapCaption.length}/200 characters</p>
                                 </div>
-                            )}
                         </div>
 
                         {/* Error display */}
@@ -300,7 +299,7 @@ export default function CheckoutPage() {
 
                     {/* Order Summary Section */}
                     <div className="lg:col-span-1 bg-[#141414] rounded-lg p-6 sm:p-8 shadow-lg h-fit sticky top-24">
-                        <h2 className="text-2xl sm:text-3xl font-gothic-1 text-white mb-6 border-b border-gray-700 pb-4">Order Summary</h2>
+                        <h2 className="text-2xl sm:text-2xl font-semibold font-saira text-white mb-6 border-b border-gray-700 pb-4">Order Summary</h2>
 
                         {/* List of items in cart */}
                         <div className="space-y-3 mb-6 max-h-60 overflow-y-auto custom-scrollbar">
@@ -338,14 +337,14 @@ export default function CheckoutPage() {
 
                         {/* Total */}
                         <div className="border-t border-gray-700 pt-4 mt-6 flex justify-between items-center">
-                            <span className="text-white text-xl sm:text-2xl font-gothic-1">Order Total</span>
+                            <span className="text-white text-xl sm:text-xl font-saira font-semibold">Order Total</span>
                             <span className="text-cyan-400 text-2xl sm:text-3xl font-saira font-bold">Rs: {totalAmount?.toLocaleString()}</span>
                         </div>
 
                         {/* Place Order Button */}
                         <button
                             type="submit"
-                            className="w-full bg-cyan-400 text-black font-bold text-lg sm:text-xl font-saira py-3 rounded-lg mt-8 hover:bg-cyan-600 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                            className="w-full bg-cyan-400 text-black font-bold text-lg sm:text-lg font-saira py-2 rounded-lg mt-8 hover:bg-cyan-600 transition-all duration-300 ease-in-out hover:text-white shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                             disabled={createLoading || cartItems?.length === 0}
                         >
                             {createLoading ? (

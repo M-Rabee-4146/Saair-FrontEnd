@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axiosinstance from "../../axios/axios";
+import axiosinstance from "@/axios/axios";
 
 export const uploadproduct = createAsyncThunk('postproduct', async (formData, thunkAPI) => {
     try {
@@ -44,7 +44,7 @@ export const getsingleproduct = createAsyncThunk('getproductbyid', async (id,{re
 export const deleteproductbyid = createAsyncThunk('deleteproductbyid', async (id,{rejectWithValue}) => {
     try {
         const response = await axiosinstance.delete(`/delete/${id}`) 
-        console.log(response.data)
+        // console.log(response.data)
          return {id, message: response.data.message || 'Product deleted successfully'};
     } catch (err) {
         console.log(err)
@@ -102,7 +102,7 @@ const productSlice = createSlice({
             }),
             builder.addCase(getallproducts.rejected, (state, action) => {
                 state.loading = false;
-                state.error = action.payload;
+                state.error = action.payload.error;
             }),
             builder.addCase(getsingleproduct.pending, (state) => {
                 state.loading = true;
