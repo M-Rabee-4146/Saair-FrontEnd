@@ -10,7 +10,7 @@ import Navbar2 from 'Components/Navbar2';
 
 const AIChat = () => {
     const domain = window.location.origin
-    console.log(domain)
+    //console.log(domain)
 
     const dispatch = useDispatch()
     const { products, loading } = useSelector((state) => state.product);
@@ -18,7 +18,7 @@ const AIChat = () => {
     const id = localStorage.getItem('id');
     const user = useSelector((state) => state.auth.user);
     if (error) {
-        console.log(error)
+        //console.log(error)
     }
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const AIChat = () => {
         }
     }, [dispatch]);
 
-    console.log(products)
+    //console.log(products)
 
 
     const productContext = {
@@ -124,7 +124,7 @@ const AIChat = () => {
         }
     }
 
-    console.log(productContext)
+    //console.log(productContext)
 
     const [messages, setMessages] = useState([
         { sender: 'ai', text: 'Hello! I am Saair AI, your personal assistant. How can I help you today?' },
@@ -144,7 +144,7 @@ const AIChat = () => {
     const handleSendMessage = async (e) => {
         e.preventDefault();
         const trimmedMessage = inputMessage.trim();
-        console.log(trimmedMessage)
+        //console.log(trimmedMessage)
         if (trimmedMessage === '') return;
 
         const newUserMessage = { sender: 'user', text: trimmedMessage, host: domain };
@@ -171,7 +171,7 @@ const AIChat = () => {
             const newAiMessage = { sender: 'ai', text: response.data.message };
             setMessages((prev) => [...prev, newAiMessage]);
         } catch (error) {
-            console.error('API call failed:', error);
+            //console.error('API call failed:', error);
             const errorText = error?.response?.data?.error || error.message || 'Something went wrong.';
             setMessages((prev) => [...prev, { sender: 'ai', text: `Error: ${errorText}` }]);
         } finally {
