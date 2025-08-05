@@ -144,7 +144,7 @@ const ManageProducts = () => {
                                                 <div className="flex items-center justify-center w-16 h-16 rounded-md overflow-hidden bg-gray-700">
                                                     {product.images && product.images.length > 0 ? (
                                                         <img
-                                                            src={`http://localhost:3200${product.images[0]}`}
+                                                            src={`https://saair-backend-production.up.railway.app${product.images[0]}`}
                                                             alt={product.title}
                                                             className="w-full h-full object-cover object-center block"
                                                         />

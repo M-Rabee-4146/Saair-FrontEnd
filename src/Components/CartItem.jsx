@@ -42,7 +42,7 @@ export default function CartItem({ item }) {
             {/* Product Image */}
             <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 bg-[#080708] rounded-md overflow-hidden flex items-center justify-center  mb-4 sm:mb-0 sm:mr-6">
                 <img
-                    src={`http://localhost:3200${item.images?.[0]}`}
+                    src={`https://saair-backend-production.up.railway.app${item.images?.[0]}`}
                     alt={item.title}
                     className="w-full h-full object-cover"
                 />

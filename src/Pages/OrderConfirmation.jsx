@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router'; // Corrected import to react-router-dom
 import { useDispatch, useSelector } from 'react-redux';
@@ -90,7 +91,7 @@ const OrderConfirmation = () => {
                                 <div key={index} className="flex flex-col sm:flex-row items-start sm:items-center mb-3 pb-3 border-b border-dotted border-gray-700 last:border-b-0 last:pb-0">
                                     {item.product?.images && item.product.images.length > 0 && (
                                         <img
-                                            src={`http://localhost:3200${item?.product?.images[0].url || item?.product?.images[0]}`} // Handle both .url property or direct string
+                                            src={`https://saair-backend-production.up.railway.app${item?.product?.images[0].url || item?.product?.images[0]}`} // Handle both .url property or direct string
                                             alt={item.product.title}
                                             className="w-20 h-20 object-cover object-center mr-0 sm:mr-4 mb-2 sm:mb-0 border border-gray-700 rounded-md flex-shrink-0"
                                         />

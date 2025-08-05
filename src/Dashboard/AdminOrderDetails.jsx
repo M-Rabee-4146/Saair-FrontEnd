@@ -170,7 +170,7 @@ const AdminOrderDetail = () => {
                                     <div key={index} className="flex flex-col sm:flex-row items-start sm:items-center py-2 border-b border-dotted border-gray-700 last:border-b-0">
                                         {item.product?.images && item.product.images.length > 0 && (
                                             <img
-                                                src={`http://localhost:3200${item.product.images[0].url || item.product.images[0]}`}
+                                                src={`https://saair-backend-production.up.railway.app${item.product.images[0].url || item.product.images[0]}`}
                                                 alt={item.product.title}
                                                 className="w-20 h-20 object-cover object-center mr-0 sm:mr-4 mb-2 sm:mb-0 rounded-md border border-gray-700 flex-shrink-0"
                                             />
