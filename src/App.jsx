@@ -31,6 +31,7 @@ import CartPage from './Pages/CartPage'
 import CheckoutPage from './Pages/Checkoutpage'
 import OrderConfirmation from './Pages/OrderConfirmation'
 import AdminOrderDetail from './Dashboard/AdminOrderDetails'
+import AIChat from 'utils/Ai_chat'
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
               <Route path="/Shop/:initialSearchTerm?" element={<Shop />} />
               <Route path="/Contact-Us" element={<ContactUs />} />
               <Route path="/About" element={<AboutUsPage />} />
+              <Route path="/AI" element={<AIChat />} />
               <Route path="/Cart" element={<AuthGuard requireAdmin={false}><CartPage /></AuthGuard>} />
               <Route path="/Checkout" element={<AuthGuard requireAdmin={false}><CheckoutPage /></AuthGuard>} />
               <Route path="/Product/:id" element={<ProductDetailPage />} />

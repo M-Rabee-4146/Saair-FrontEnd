@@ -1,24 +1,19 @@
-// Pages/CartPage.jsx
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router'; // Use react-router-dom for navigate
 import Navbar2 from '../Components/Navbar2';
 import Footer from '../Components/Footer';
 import CartItem from '../Components/CartItem'; // Ensure this path is correct
-// Import ClearCart specifically from the slice as it's exported by name
 import { ClearCart } from '../Redux/features/cart'; // IMPORTANT: Use 'ClearCart' as per your slice export
 import { toast } from 'react-hot-toast';
 
 export default function CartPage() {
-    // CORRECTED: Access cart items from state.cart.cart as per your CartSlice's initialState structure
-    // Your slice's state is { cart: [] }, so if mounted as 'cart' in store, it's state.cart.cart
-    const cartItems = useSelector((state) => state.cart.cart);
-
-    // Calculate totalAmount directly here since it's not part of the slice's state
-    const totalAmount = cartItems?.reduce((acc, item) => acc + (item.totalprice * item.quantity), 0) || 0;
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const cartItems = useSelector((state) => state.cart.cart);
+
+    const totalAmount = cartItems?.reduce((acc, item) => acc + (item.totalprice * item.quantity), 0) || 0;
+
 
     const handleClearCart = () => {
         dispatch(ClearCart()); // Use the exact action name 'ClearCart'

@@ -8,28 +8,38 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const Testimonials = () => {
- const testimonials =  [
-      {
-        name: 'Douaa AbidBator',
-        message:
-          'Excellent customer service! Would recommend if anyone is looking for a car. They made sure that I got the best possible deal for my new car.',
-      },
-      {
-        name: 'Anastasia S.',
-        message:
-          'Youssof was the best in assisting me i worldwide shortage of cars. I highly recommend Youssof!',
-      },
-      {
-        name: 'Rabee S.',
-        message:
-          'hortage of cars. I highly recommend Youssof!',
-      },
-      {
-        name: 'Helo S.',
-        message:
-          'Youssof was the best in assisting me in both getting out of my current lease and finding myself a new one with all the criteria I requested during a worldwide shortage of cars. I highly recommend Youssof!',
-      },
-    ]
+const testimonials = [
+  {
+    name: 'Aisha K.',
+    message:
+      'Absolutely thrilled with my recent purchase from Saair! The quality of the product exceeded my expectations, and shipping was incredibly fast. Highly recommend!',
+  },
+  {
+    name: 'Bilal R.',
+    message:
+      'Saair has become my go-to for online shopping. Their website is so easy to navigate, and the product descriptions are always accurate. Fantastic customer service too!',
+  },
+  {
+    name: 'Zara S.',
+    message:
+      'I found exactly what I was looking for on Saair, and the entire process from Browse to checkout was seamless. Will definitely be a returning customer!',
+  },
+  {
+    name: 'Hamza A.',
+    message:
+      'The items arrived well-packaged and in perfect condition. Saair offers great value for money and a wide selection. Very impressed!',
+  },
+  {
+    name: 'Sana M.',
+    message:
+      'Had a question about my order and Saair\'s support team responded quickly and was very helpful. Excellent experience from start to finish!',
+  },
+  {
+    name: 'Omar D.',
+    message:
+      'The product photos on Saair are true to life, which really helped my decision. I love the unique items they offer. Five stars!',
+  },
+];
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 

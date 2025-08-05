@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronUpIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import { ChatBubbleOvalLeftIcon, ChevronUpIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import { Link, useLocation } from "react-router";
 
 const Footer = () => {
@@ -62,13 +62,19 @@ const Footer = () => {
       {/* Scroll to Top */}
       <div className="text-center py-3 border-t border-gray-950  text-gray-500 text-sm">
         © 2025 Saair. All rights reserved.
-        {/* <button
+        <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed z-50  bottom-6 right-6 bg-cyan-400 text-black p-3 rounded-full shadow-lg hover:bg-cyan-600 transition"
+          className="fixed z-50  bottom-20 right-6 bg-cyan-400 text-black p-3 rounded-full shadow-lg hover:bg-cyan-600 transition"
         >
           <ChevronUpIcon className="size-5" />
-        </button> */}
-      </div>
+        </button>
+         <Link
+          to={'/AI'}
+          className="fixed z-50  bottom-6 right-6 bg-cyan-400 text-black p-3 rounded-full shadow-lg hover:bg-cyan-600 transition"
+        >
+          <ChatBubbleOvalLeftIcon className="size-5" />
+        </Link>
+      </div>  {/* Scroll to Top */}
     </footer>
   );
 };

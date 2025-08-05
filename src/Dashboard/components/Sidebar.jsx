@@ -115,7 +115,7 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
       <nav className="flex-grow mt-4">
         <ul className="space-y-1">
           {/* Collapse Button - Placed inside nav for better flow */}
-          <li className="mb-4">
+          <li className="mb-4 hidden md:flex">
             <button
               onClick={() => setIsCollapsed(!isCollapsed)}
               className="w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors duration-300"

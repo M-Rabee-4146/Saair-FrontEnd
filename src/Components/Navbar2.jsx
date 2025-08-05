@@ -1,5 +1,5 @@
 // src/components/Navbar.jsx
-import { Bars3Icon, HomeIcon, MagnifyingGlassIcon, PhoneIcon, QuestionMarkCircleIcon, ShoppingBagIcon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, ChatBubbleOvalLeftIcon, HomeIcon, MagnifyingGlassIcon, PhoneIcon, QuestionMarkCircleIcon, ShoppingBagIcon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { UserIcon } from '@heroicons/react/24/outline';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
@@ -120,7 +120,7 @@ const Navbar2 = () => {
                             <MagnifyingGlassIcon className='size-4 hover:text-cyan-400 hover:scale-125 transition-all duration-300 ease-in-out ' />
                         </button>
                         <Link to={'/Cart'}><ShoppingBagIcon className='size-4 hover:text-cyan-400 hover:scale-125 transition-all duration-300 ease-in-out ' /> </Link>
-                      {token && role? role=='Admin'? <button onClick={navigate('/Dashboard')} className="hover:border-cyan-400 hover:text-gray-90 font-[450] py-1 px-6 rounded-xl border border-[#ffffff25] bg-[#fefefe1f] hover:shadow-md transition duration-200 backdrop-filter backdrop-blur-sm shadow-xl hover:shadow-cyan-600 font-saira">
+                      {token && role? role=='admin'? <button onClick={navigate('/Dashboard')} className="hover:border-cyan-400 hover:text-gray-90 font-[450] py-1 px-6 rounded-xl border border-[#ffffff25] bg-[#fefefe1f] hover:shadow-md transition duration-200 backdrop-filter backdrop-blur-sm shadow-xl hover:shadow-cyan-600 font-saira">
                             <div className="flex justify-between items-center "> <UserIcon className='size-4 mr-2' /> Dashboard</div>
                         </button>:<button onClick={logoutNow} className="hover:border-cyan-400 hover:text-gray-90 font-[450] py-1 px-6 rounded-xl border border-[#ffffff25] bg-[#fefefe1f] hover:shadow-md transition duration-200 backdrop-filter backdrop-blur-sm shadow-xl hover:shadow-cyan-600 font-saira">
                             <div className="flex justify-between items-center "> <UserIcon className='size-4 mr-2' /> Logout</div>
@@ -167,21 +167,23 @@ const Navbar2 = () => {
                             <button type="submit" className="hidden"></button>
                         </form>
                     </div>
-                    <div className="space-y-8 pr-6 pl-3 pb-12 w-[75vw] mt-8"> {/* Removed relative from here */}
+                    <div className="space-y-6 pr-6 pl-3 pb-12 w-[75vw] mt-8"> {/* Removed relative from here */}
                         {[
-                            { title: `Home`, to: '/', icon: <HomeIcon className='size-6' /> },
-                            { title: 'Shop', to: '/Shop', icon: <ShoppingBagIcon className='size-6' /> },
-                            { title: 'Signup', to: '/Signup', icon: <UserIcon className='size-6' /> },
-                            { title: 'Contact Us', to: '/Contact-Us', icon: <PhoneIcon className='size-6' /> },
-                            { title: 'About me', to: '/About', icon: <QuestionMarkCircleIcon className='size-6' /> },
+                            { title: `Home`, to: '/', icon: <HomeIcon className='size-5' /> },
+                            { title: 'Shop', to: '/Shop', icon: <ShoppingBagIcon className='size-5' /> },
+                            { title: 'Cart', to: '/Cart', icon: <ShoppingCartIcon className='size-5' /> },
+                            { title: 'Sign in', to: '/Login', icon: <UserIcon className='size-5' /> },
+                            { title: 'Ai Assistant', to: '/AI', icon: <ChatBubbleOvalLeftIcon className='size-5' /> },
+                            { title: 'Contact Us', to: '/Contact-Us', icon: <PhoneIcon className='size-5' /> },
+                            { title: 'About me', to: '/About', icon: <QuestionMarkCircleIcon className='size-5' /> },
                         ].map((item) => (
                             <Link
                                 key={item.title}
                                 to={item.to}
-                                className="block hover:text-cyan-400 hover:font-bold font-normal transition duration-150 font-saira active:text-cyan-400 hover:scale-105 rounded-lg px-2 py-2 items-center space-x-3"
+                                className="block hover:text-cyan-400 hover:font-bold font-normal transition duration-150 font-saira active:text-cyan-400 hover:scale-105 rounded-lg px-2 py-1 items-center space-x-3"
                                 onClick={handleMobileNavLinkClick}
                             >
-                                <h1 className='flex text-xl'> <span className='mr-7'>{item.icon}</span>{item.title}</h1>
+                                <h1 className='flex text-lg'> <span className='mr-7'>{item.icon}</span>{item.title}</h1>
                             </Link>
                         ))}
                     </div>

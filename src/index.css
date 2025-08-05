@@ -36,3 +36,24 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #555555; /* Thumb hover color */
 }
+
+/* src/index.css or a global CSS file */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+.dot-animation-1 {
+    animation: fadeIn 0.5s ease-in-out infinite alternate;
+}
+.dot-animation-2 {
+    animation: fadeIn 0.5s ease-in-out infinite alternate 0.2s; /* Add a delay */
+}
+.dot-animation-3 {
+    animation: fadeIn 0.5s ease-in-out infinite alternate 0.4s; /* Add another delay */
+}
